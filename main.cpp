@@ -78,9 +78,21 @@ void buscarAtleta(const string& nombre){
             break;
         }
     }
-
-
+    if (!encontrado){
+        cout<<"Atleta no encontrado.\n";
+    }
 }
+
+void calcularMedallasPorPais(const string& pais){
+    int totalMedallas = 0;
+    for(size_t i= 0; i < paises.size(); ++i){
+        if (paises[i]== pais){
+            totalMedallas += medallas[i];
+        }
+    }
+    cout<<"Total de medallas para "<<pais<<": "<<totalMedallas<<"\n";
+}
+
 
 
 
