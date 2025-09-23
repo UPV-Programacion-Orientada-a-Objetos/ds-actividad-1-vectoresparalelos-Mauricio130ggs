@@ -92,6 +92,77 @@ void calcularMedallasPorPais(const string& pais){
     }
     cout<<"Total de medallas para "<<pais<<": "<<totalMedallas<<"\n";
 }
+ void encontrarAtletaConMasMedallas(){
+    int maxMedallas = -1;
+    string atleta;
+    for(size_t i=0; i< medallas.size(); ++i){
+        if (medallas[i]> maxMedallas){
+            maxMedallas = medallas[i];
+            atleta = nombres[i];
+        }
+    }
+    cout<<"Atleta con mas medallas: "<<atleta<<" con "<<maxMedallas<<" medallas.\n";
+ }
+
+ string obtenerRutaArchivo() {
+     string archivo;
+     cout << "Ingrese la ruta del archivo (Enter para usar data/data1.csv): ";
+     getline(cin, archivo);
+
+     if(archivo.empty()) {
+         archivo = "data/data1.csv";
+     }
+     return archivo;
+ }
+ int main(){
+    string nombreArchivo = obtenerRutaArchivo();
+    leerArchivo(nombreArchivo);
+
+    int opcion;
+    do {
+        cout << "\nMenu:\n";
+        cout << "1. Registrar nuevo atleta\n";
+        cout << "2. Buscar atleta por nombre\n";
+        cout << "3. Calcular total de medallas por pais\n";
+        cout << "4. Encontrar atleta con mas medallas\n";
+        cout << "5. Salir\n";
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+
+        switch (opcion){
+            case 1:
+                registrarAtleta();
+                break;
+            case 2: {
+                string nombre;
+                cout << "Ingrese el nombre del atleta a buscar: ";
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar el buffer
+                getline(cin, nombre);
+                buscarAtleta(nombre);
+                break;
+            }
+            case 3: {
+                string pais;
+                cout << "Ingrese el pais: ";
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar el buffer
+                getline(cin, pais);
+                calcularMedallasPorPais(pais);
+                break;
+            }
+            case 4:
+                encontrarAtletaConMasMedallas();
+                break;
+            case 5:
+                cout << "Saliendo del programa.\n";
+                break;
+            default:
+                cout << "Opcion invalida. Intente de nuevo.\n";
+        }
+    } while (opcion != 5);
+
+    return 0;
+ }
+
 
 
 
