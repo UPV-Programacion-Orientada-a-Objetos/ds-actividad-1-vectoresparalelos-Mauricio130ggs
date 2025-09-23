@@ -114,57 +114,51 @@ void calcularMedallasPorPais(const string& pais){
      }
      return archivo;
  }
- int main(){
-    string nombreArchivo = obtenerRutaArchivo();
-    leerArchivo(nombreArchivo);
-
+ int main() {
+    string archivo = obtenerRutaArchivo();
+    leerArchivo(archivo);
     int opcion;
-    do {
-        cout << "\nMenu:\n";
-        cout << "1. Registrar nuevo atleta\n";
-        cout << "2. Buscar atleta por nombre\n";
-        cout << "3. Calcular total de medallas por pais\n";
-        cout << "4. Encontrar atleta con mas medallas\n";
-        cout << "5. Salir\n";
-        cout << "Seleccione una opcion: ";
-        cin >> opcion;
-
+    do{
+        cout<< "Menu:\n";
+        cout<< "1. Registrar nuevo atleta\n";
+        cout<< "2. Buscar atleta por nombre\n";
+        cout<< "3. Calcular total de medallas por pais\n";
+        cout<< "4. Encontrar atleta con mas medallas\n";
+        cout<< "5. Salir\n";
+        cout<< "Seleccione una opcion: ";
+        cin>> opcion;
         switch (opcion){
             case 1:
-                registrarAtleta();
-                break;
+            registrarAtleta();
+            break;
             case 2: {
                 string nombre;
-                cout << "Ingrese el nombre del atleta a buscar: ";
-                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar el buffer
+                cout<<"Ingrese el nombre del atleta a buscar: ";
+                cin.ignore();
                 getline(cin, nombre);
                 buscarAtleta(nombre);
                 break;
             }
             case 3: {
                 string pais;
-                cout << "Ingrese el pais: ";
-                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar el buffer
+                cout<<"Ingrese el pais: ";
+                cin.ignore();
                 getline(cin, pais);
                 calcularMedallasPorPais(pais);
                 break;
             }
             case 4:
-                encontrarAtletaConMasMedallas();
-                break;
+            encontrarAtletaConMasMedallas();
+            break;
             case 5:
-                cout << "Saliendo del programa.\n";
-                break;
+            cout<<"Saliendo del programa.\n";
+            break;
             default:
-                cout << "Opcion invalida. Intente de nuevo.\n";
+            cout<<"Opcion invalida. Intente de nuevo.\n";
         }
     } while (opcion != 5);
-
     return 0;
- }
-
-
-
-
+}
+               
 
 
